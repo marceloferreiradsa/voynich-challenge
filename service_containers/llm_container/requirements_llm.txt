@@ -1,0 +1,8 @@
+# Only LLM-specific dependencies
+auto-gptq==0.7.1
+transformers==4.40.2
+optimum==1.19.1
+accelerate==0.30.1
+loguru==0.7.2
+einops==0.8.0
+peft==0.10.0  # Add explicit peft version

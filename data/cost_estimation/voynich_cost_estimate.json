@@ -1,0 +1,23 @@
+{
+  "total_estimated_cost": 0.13799999999999998,
+  "sections_estimated": 2,
+  "per_section_avg": 0.06899999999999999,
+  "details": [
+    {
+      "section": "f1r - Text",
+      "section_tokens": 554,
+      "context_tokens": 4946,
+      "estimated_input_tokens": 6000,
+      "estimated_output_tokens": 300,
+      "estimated_cost": 0.06899999999999999
+    },
+    {
+      "section": "f1v - Herbal",
+      "section_tokens": 220,
+      "context_tokens": 5280,
+      "estimated_input_tokens": 6000,
+      "estimated_output_tokens": 300,
+      "estimated_cost": 0.06899999999999999
+    }
+  ]
+}
