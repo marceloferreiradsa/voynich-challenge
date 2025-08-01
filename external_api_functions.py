@@ -202,3 +202,49 @@ class VoynichContextManager:
                 f.write(json.dumps({"prompt": prompt, "response": result}, ensure_ascii=False) + "\n")
             final_summary = content
         return final_summary
+
+    def _load_all_responses(self) -> list:
+            """
+            Reads every line from responses.jsonl and returns a list of the 'response' objects.
+            """
+            if not self.responses_path.exists():
+                raise FileNotFoundError(f"{self.responses_path} not found.")
+            responses = []
+            with open(self.responses_path, 'r', encoding='utf-8') as f:
+                for line in f:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    entry = json.loads(line)
+                    # assume each entry is {"prompt": ..., "response": {...}}
+                    responses.append(entry.get("response"))
+            return responses
+
+    def summarize_all_responses(self,
+                                model: str = "gpt-4.1",
+                                temperature: float = 0.7) -> dict:
+        """
+        Sends all raw responses to the LLM and asks for a cohesive summary.
+        Returns the parsed JSON output (or raw content on JSON errors).
+        """
+        # Load everything
+        all_responses = self._load_all_responses()
+        # Build prompt
+        prompt = f"""
+            You are a senior research assistant. You have access to the following raw analyses of the Voynich Manuscript,
+            each representing a structured hypothesis or observation:
+
+            {json.dumps(all_responses, ensure_ascii=False, indent=2)}
+
+            Please synthesize these into a single, coherent summary. Group similar ideas, highlight
+            recurring structural patterns, and produce an overarching hypothesis about the Voynich script.
+            Respond in JSON with keys:
+            - "summary_hypothesis": string
+            - "key_patterns": list of strings
+            - "possible_language_influences": list of strings
+            - "conclusion_type": one of ["natural_language","constructed_language","cipher"]
+            - "open_questions": list of strings
+            """
+        # Call model and return
+        result = self.call_openai(prompt, model=model, temperature=temperature)
+        return result
