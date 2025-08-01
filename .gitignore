@@ -12,6 +12,8 @@ venv/
 env/
 ENV/
 .voynich-challenge/
+.voynich/
+.voynich-note/
 
 # VS Code
 .vscode/
