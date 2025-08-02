@@ -1,6 +1,6 @@
 from docx import Document
 
-def render_summary_to_docx(summary: dict, output_path: str = "voynich_summary.docx"):
+def render_summary_to_docx_old(summary: dict, output_path: str = "voynich_summary.docx"):
     """
     Renders the given summary dictionary into a .docx file.
     
@@ -43,5 +43,42 @@ def render_summary_to_docx(summary: dict, output_path: str = "voynich_summary.do
         doc.add_paragraph(question, style="List Number")
 
     # Save the document
+    doc.save(output_path)
+    print(f"Document saved to {output_path}")
+
+
+def render_dict_to_docx(data: dict, output_path: str = "voynich_generic_summary.docx"):
+    """
+    Renders any nested dictionary into a structured .docx file using its keys as headings.
+    
+    Args:
+        data (dict): The dictionary to render.
+        output_path (str): Path where the .docx will be saved.
+    """
+    doc = Document()
+    doc.add_heading("Generated Summary", level=1)
+
+    def render_section(content: Union[dict, list, str, int, float, None], level: int = 2):
+        """
+        Recursively renders content based on its type.
+        """
+        if isinstance(content, dict):
+            for key, value in content.items():
+                doc.add_heading(str(key), level=level)
+                render_section(value, level=min(level + 1, 5))  # limit heading levels
+        elif isinstance(content, list):
+            for item in content:
+                if isinstance(item, (str, int, float)):
+                    doc.add_paragraph(str(item), style="List Bullet")
+                elif isinstance(item, dict):
+                    render_section(item, level=level)
+                else:
+                    doc.add_paragraph(str(item))
+        elif content is None:
+            doc.add_paragraph("(none)")
+        else:
+            doc.add_paragraph(str(content))
+
+    render_section(data)
     doc.save(output_path)
     print(f"Document saved to {output_path}")

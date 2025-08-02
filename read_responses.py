@@ -1,4 +1,4 @@
-from archive.external_api_functions import VoynichContextManager
+from external_api_functions import VoynichContextManager
 
 # Match these paths to your setup
 reference_paths = {
@@ -15,7 +15,7 @@ manager = VoynichContextManager(
     responses_path="responses.jsonl"
 )
 
-# Show the last 5 responses
+# Show the last N responses
 manager.show_responses(max_items=50)
 
 #cost = manager.estimate_recursive_cost(rounds=3, output_multiplier=1.2)
