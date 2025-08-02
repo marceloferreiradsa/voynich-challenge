@@ -1,4 +1,5 @@
 from docx import Document
+from typing import Any, Union
 
 def render_summary_to_docx_old(summary: dict, output_path: str = "voynich_summary.docx"):
     """

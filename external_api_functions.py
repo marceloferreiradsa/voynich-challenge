@@ -92,7 +92,7 @@ class VoynichContextManager:
         self._save_processed()
         return payloads
 
-    def call_openai(self, prompt: str, model: str = "gpt-4.1-turbo", temperature: float = 0.0) -> dict:
+    def call_openai(self, prompt: str, model: str = "gpt-4.1", temperature: float = 0.0) -> dict:
         response = openai.chat.completions.create(
             model=model,
             messages=[{"role": "user", "content": prompt}],
@@ -118,7 +118,7 @@ class VoynichContextManager:
             try:
                 entry = json.loads(line)
                 print(f"\n=== Response #{i} ===")
-                print("Prompt (preview):", entry['prompt'][:200].replace("\n", " "), "...")
+                print("Prompt:", entry['prompt'].replace("\n", " "), "...")
                 print("Response:")
                 resp = entry["response"]
                 if isinstance(resp, dict):
@@ -128,6 +128,7 @@ class VoynichContextManager:
                     print(resp)
             except json.JSONDecodeError:
                 print(f"[Error decoding response #{i}]")
+            return resp
 
     def estimate_recursive_cost(
         self,
