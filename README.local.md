@@ -1,3 +1,0 @@
-# Voynich Challenge
-
-Project overview.

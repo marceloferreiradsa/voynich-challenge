@@ -1,6 +1,8 @@
 import os
 import json
-
+from pathlib import Path
+from typing import Any, Union
+import openai
 
 def build_folder_tree_dict(base_path):
     tree = {}
@@ -90,9 +92,6 @@ def archive_python_files(
         print(f"Failed to write archive: {e}")
 
 
-import os
-import json
-import openai
 
 def analyze_python_functions_from_archive(
     archive_path: str = "archive/documentation/source_archive.jsonl",
@@ -161,3 +160,71 @@ def analyze_python_functions_from_archive(
         json.dump(results, out_f, indent=2, ensure_ascii=False)
     
     print(f"✅ Function descriptions saved to {output_path}")
+
+
+def render_functions_to_readme(
+    json_path: str = "archive/documentation/function_descriptions.json",
+    output_path: str = "README.md",
+    project_title: str = "Function Documentation"
+):
+    """
+    Reads a JSON file containing:
+      [
+        {
+          "file_name": "foo.py",
+          "functions": [
+            {"function_name": "do_x", "description": "..."},
+            ...
+          ]
+        },
+        ...
+      ]
+    and writes a README.md with:
+    
+    # Project Title
+    ## foo.py
+    ### do_x
+    description...
+    ### another_fn
+    description...
+    ## bar.py
+    ...
+    """
+    # Load the structured JSON
+    with open(json_path, "r", encoding="utf-8") as f:
+        files_info = json.load(f)
+
+    lines = []
+    # Top-level title
+    lines.append(f"# {project_title}\n")
+    lines.append("This document was auto-generated. It describes each Python function\n"
+                 "found in the project’s source files, along with a brief summary.\n")
+
+    # Iterate per file
+    for entry in files_info:
+        file_name = entry.get("file_name", "unknown")
+        functions = entry.get("functions", [])
+
+        # File-level heading
+        lines.append(f"---\n")
+        lines.append(f"## `{file_name}`\n")
+        if not functions:
+            lines.append("_No functions detected in this file._\n")
+            continue
+
+        # For each function in this file
+        for fn in functions:
+            fn_name = fn.get("function_name", "<unnamed>")
+            desc    = fn.get("description", "").strip()
+            lines.append(f"### `{fn_name}`\n")
+            lines.append(f"{desc}\n")
+
+    # Ensure output directory exists
+    output_dir = Path(output_path).parent
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    # Write to README.md
+    with open(output_path, "w", encoding="utf-8") as out:
+        out.write("\n".join(lines))
+
+    print(f"✅ README generated at {output_path}")
