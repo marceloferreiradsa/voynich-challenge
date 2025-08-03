@@ -162,9 +162,12 @@ def analyze_python_functions_from_archive(
     print(f"✅ Function descriptions saved to {output_path}")
 
 
+
+
 def render_functions_to_readme(
     json_path: str = "archive/documentation/function_descriptions.json",
     output_path: str = "README.md",
+    readme_head_path: str = "archive/documentation/readme_head.md",
     project_title: str = "Function Documentation"
 ):
     """
@@ -179,52 +182,59 @@ def render_functions_to_readme(
         },
         ...
       ]
-    and writes a README.md with:
-    
+    Also prepends the contents of a Markdown head section before appending function docs.
+
+    The resulting README.md looks like:
+
+    [readme_head.md content]
+
     # Project Title
+    Description...
     ## foo.py
     ### do_x
     description...
-    ### another_fn
-    description...
-    ## bar.py
     ...
     """
     # Load the structured JSON
     with open(json_path, "r", encoding="utf-8") as f:
         files_info = json.load(f)
 
-    lines = []
-    # Top-level title
-    lines.append(f"# {project_title}\n")
-    lines.append("This document was auto-generated. It describes each Python function\n"
-                 "found in the project’s source files, along with a brief summary.\n")
+    # Read optional README head content
+    head_lines = []
+    readme_head_path = Path(readme_head_path)
+    if readme_head_path.exists():
+        with readme_head_path.open("r", encoding="utf-8") as head_file:
+            head_lines = head_file.read().splitlines()
+        head_lines.append("\n---\n")  # Visual separator between head and auto-generated section
 
-    # Iterate per file
+    # Start building function documentation content
+    doc_lines = []
+    doc_lines.append(f"# {project_title}\n")
+    doc_lines.append("This document was auto-generated. It describes each Python function\n"
+                     "found in the project’s source files, along with a brief summary.\n")
+
     for entry in files_info:
         file_name = entry.get("file_name", "unknown")
         functions = entry.get("functions", [])
 
-        # File-level heading
-        lines.append(f"---\n")
-        lines.append(f"## `{file_name}`\n")
+        doc_lines.append(f"---\n")
+        doc_lines.append(f"## `{file_name}`\n")
         if not functions:
-            lines.append("_No functions detected in this file._\n")
+            doc_lines.append("_No functions detected in this file._\n")
             continue
 
-        # For each function in this file
         for fn in functions:
             fn_name = fn.get("function_name", "<unnamed>")
-            desc    = fn.get("description", "").strip()
-            lines.append(f"### `{fn_name}`\n")
-            lines.append(f"{desc}\n")
+            desc = fn.get("description", "").strip()
+            doc_lines.append(f"### `{fn_name}`\n")
+            doc_lines.append(f"{desc}\n")
 
     # Ensure output directory exists
     output_dir = Path(output_path).parent
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    # Write to README.md
+    # Write everything to the README
     with open(output_path, "w", encoding="utf-8") as out:
-        out.write("\n".join(lines))
+        out.write("\n".join(head_lines + doc_lines))
 
     print(f"✅ README generated at {output_path}")

@@ -49,6 +49,8 @@ In the folder 'service_containers' you find all needed files to build the embedd
 The idea in the beggining was to be able to compare the local LLM with Gemini or OpenAI models, but the hallucinations and incoherent responses have defeated me and I had to take a more pragmatic approach to be apple to complete the project in the deadline.
 
 
+---
+
 # Function Documentation
 
 This document was auto-generated. It describes each Python function
