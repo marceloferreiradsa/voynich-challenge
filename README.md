@@ -1,3 +1,54 @@
+# The challenge
+
+## Description
+
+### Tasks:
+
+Build a pipeline that ingests transcribed Voynich text (EVA or Takahashi transcription)
+Use LLMs, embeddings, or custom models to find patterns, possible meanings, or linguistic structures
+Try to match parts of the text with known languages, glyph frequencies, or hypothesized semantics
+Input: Transcription file (e.g., voynich_eva.txt), Optional: XML or images from the Beinecke Library
+
+### Output Example:
+
+{ "section": "Herbal A", "hypothesis": "This section might describe plant properties using a symbolic language.", "translation_attempt": { "line_1": "otedy qokeedy qokedy", "meaning": "plant root soak boil" } }
+
+#### Requirements:
+Use AI reasoning to explore unknown language or construct hypotheses
+Provide clear logs of your process
+Explain why you believe your approach may uncover meaning
+
+#### Bonus Features:
+Visual overlay of decoded terms on manuscript images
+Model fine-tuned on similar ciphered texts
+Timeline of symbol usage evolution across manuscript pages
+
+
+# The Solution Project
+
+My intented approach to the solution primarily targets to find the right path for a solution, therefore
+I'm not going to find meaning directly in the first place, I want to find out first what is propably the
+most adequate way of tackling the Voynich mistery in the first place. I explain.
+
+Most people already starts to tackle the problem being certain that it is a misterious language. Artificial or not, but a language. Like elfic from Tolkien. But even this initial supposition should be challenged, because the wrong approach could lead to the wrong solutions, or even increase the hypothesis of the document being just an ellaborate fraud.
+
+## Why my approach may uncover meaning
+
+I believe that we have two possibilities here: or the document has some meaningful content in its writings, or not. And if it has indeed any meaningful content it can be a forgotten language, or an artificial language that follows known languages instructures, or a cypher that can with the right inner rules, apparently contradict language structure rules.
+
+Therefore, I believe my carefull approach to be able to first indicate the right path - analyse it as a language or a cypher - and then we'll be able to uncover the meaning tackling the problem with the right tools.
+
+#### Note:At the end my deadline I have only got to the point where the LLM indicate the possibility of the document be a Cypher, I had not enough time to build the second stage of the study, that would be uncover meaning tackling the problem as a cypher not a language.
+
+## For those who want to reproduce it
+
+Start using the 'PipelineControl.ipynb' notebook as a guide of the steps and the auto-generated Function Documentation below.
+
+In the folder 'service_containers' you find all needed files to build the embedding model container and the llm model container for local executions. I had a bad experience with it, but you can with careful tweaking achieve a better result. 
+
+The idea in the beggining was to be able to compare the local LLM with Gemini or OpenAI models, but the hallucinations and incoherent responses have defeated me and I had to take a more pragmatic approach to be apple to complete the project in the deadline.
+
+
 # Function Documentation
 
 This document was auto-generated. It describes each Python function
