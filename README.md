@@ -38,7 +38,7 @@ I believe that we have two possibilities here: or the document has some meaningf
 
 Therefore, I believe my carefull approach to be able to first indicate the right path - analyse it as a language or a cypher - and then we'll be able to uncover the meaning tackling the problem with the right tools.
 
-#### Note:At the end my deadline I have only got to the point where the LLM indicate the possibility of the document be a Cypher, I had not enough time to build the second stage of the study, that would be uncover meaning tackling the problem as a cypher not a language.
+#### Note: At the end my deadline I have only got to the point where the LLM indicate the possibility of the document be a Cypher. I was at risk of losing the deadline, so I decided to deliver the result before building its second stage of the project. The objective of it would be uncover meaning tackling the problem as a cypher not a language.
 
 ## For those who want to reproduce it
 
