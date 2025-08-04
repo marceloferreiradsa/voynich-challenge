@@ -123,6 +123,7 @@ summary_hypothesis: The Voynich manuscript employs a highly structured, modular 
   possible_language_influences: ['Syriac', 'Coptic', 'Greek', 'Hebrew']
   conclusion_type: constructed_language
   open_questions: ['What specific grammatical or semantic roles do the recurring suffixes and prefixes encode?', "Is the '=' delimiter always a section/header marker, or does it serve additional syntactic or semantic functions?", "Can the internal delimiters ('!', '-') and repeated characters be systematically mapped to known grammatical or structural features?", 'Is there an underlying natural language being encoded, or is the entire system a cipher or an artificial/constructed language?', 'How are token boundaries and hierarchical structure determined in longer passages without explicit delimiters?', 'What is the relationship between the observed statistical patterns and the actual content or meaning of the manuscript?']
+
 ---
 
 # Function Documentation
