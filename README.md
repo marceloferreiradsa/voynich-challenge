@@ -28,7 +28,7 @@ Timeline of symbol usage evolution across manuscript pages
 
 My intented approach to the solution primarily targets to find the right path for a solution, therefore
 I'm not going to find meaning directly in the first place, I want to find out first what is propably the
-most adequate way of tackling the Voynich mistery in the first place. I explain.
+most adequate way of tackling the Voynich mystery in the first place. I explain.
 
 Most people already starts to tackle the problem being certain that it is a misterious language. Artificial or not, but a language. Like elfic from Tolkien. But even this initial supposition should be challenged, because the wrong approach could lead to the wrong solutions, or even increase the hypothesis of the document being just an ellaborate fraud.
 
@@ -46,7 +46,7 @@ Start using the 'PipelineControl.ipynb' notebook as a guide of the steps and the
 
 In the folder 'service_containers' you find all needed files to build the embedding model container and the llm model container for local executions. I had a bad experience with it, but you can with careful tweaking achieve a better result. 
 
-The idea in the beggining was to be able to compare the local LLM with Gemini or OpenAI models, but the hallucinations and incoherent responses have defeated me and I had to take a more pragmatic approach to be apple to complete the project in the deadline.
+The idea in the beggining was to be able to compare the local LLM with Gemini or OpenAI models, but the hallucinations and incoherent responses have defeated me and I had to take a more pragmatic approach to be able to complete the project in the deadline.
 
 # My detailed path
 
@@ -56,15 +56,15 @@ The idea in the beggining was to be able to compare the local LLM with Gemini or
 
 - The Voynich Manuscript was rediscovered in 1912 but, according to studies, it was dated to roughly 1404.
 - Although it is composed by unintelligible script, it contains illustrations that suggest it can be an alchemical document given the subjects it seems to address.
-- The sometimes strage plants and images git to it an almost aneiric characteristic and seems to have instructions or recipes of some kind
+- The sometimes strange plants and images git to it an almost aneiric characteristic and seems to have instructions or recipes of some kind
 - By the rules of the challenge I must use the Takahashi transcription, so I have to find the best source for it.
 - Should I make local API call or call OpenAI and Gemini - or other - from the beginning? I wanted to make local APIs to make a better cost control and also be able to compare the performance of local models with the best models available.
 - I also needed to decide if I would use local embeddings or external calls for embeddings. Or even if I would use embeddings at all. 
-- I see many people focusing in the mistery of the Voynich and getting lost in the 'meaning of the mistery language'. But we do not know if it is a language at all. I need to start a process that can decide what is the best approach. Part of the work is to decide if the Voynich needs to be translated or deciphered. My approach must be linguistic at first, but not to prove that the Voynich is written in a forgotten misterious language, but to see if it is a language at all.
+- I see many people focusing in the mystery of the Voynich and getting lost in the 'meaning of the mystery language'. But we do not know if it is a language at all. I need to start a process that can decide what is the best approach. Part of the work is to decide if the Voynich needs to be translated or deciphered. My approach must be linguistic at first, but not to prove that the Voynich is written in a forgotten misterious language, but to see if it is a language at all.
 
 ### A. How I decided to start
 
-1. Given the brief characteristics listed above, I have decided to gather some foundational alchemical texts from XV century and before and figure out how to compare it to the document. Why?: This approach could extract from the document any similarity in grammar structure or even meanings - although I must keep in mind it is an unsolved mistery, so I must tackle it with care and some humbleness.
+1. Given the brief characteristics listed above, I have decided to gather some foundational alchemical texts from XV century and before and figure out how to compare it to the document. Why?: This approach could extract from the document any similarity in grammar structure or even meanings - although I must keep in mind it is an unsolved mystery, so I must tackle it with care and some humbleness.
 2. I decided to use local models to compare later with industry standard. 
 3. I also decided to use local embeddings because the quality difference between it and the most advanced models would not mean much. I was also worried about cost, although embedding models are much cheaper I was trying to think as a company with billions of tokens to process.
 
