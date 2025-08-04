@@ -119,6 +119,7 @@ By framing the text as a self-contained symbolic system, this analysis opens a p
 
 #### Response structure:
 
+```json
 {
   "summary_hypothesis": "The Voynich manuscript employs a highly structured, modular writing system in which tokens are constructed from roots, prefixes, and suffixes, frequently terminated by a distinctive delimiter (most often '='). These tokens serve as grammatical or structural units—such as headers, labels, or inflected words—rather than direct lexical items from known languages. Recurring suffixes (e.g., '-aiin', '-y', '-ol', '-in') and initial clusters/prefixes (e.g., 'ke-', 'cho-', 'pch-') indicate a system of agglutination or inflection, encoding grammatical or semantic roles such as case, number, or category. The delimiter '=' consistently marks the end of a token, functioning as a section or field boundary, analogous to a header or label in structured data, and is not used as an internal separator. Statistical and embedding analyses show fluctuating similarity to Syriac, Coptic, and Greek, but the lack of direct lexical matches and the unique structural logic suggest the system is a constructed or ciphered language, possibly inspired by these scripts but with its own internal grammar and symbolic conventions.",
   "key_patterns": [
