@@ -143,6 +143,7 @@ By framing the text as a self-contained symbolic system, this analysis opens a p
     "What is the relationship between the observed statistical patterns and the actual content or meaning of the manuscript?"
   ]
 }
+```
 
 
 ---
