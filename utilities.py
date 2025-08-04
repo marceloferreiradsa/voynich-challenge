@@ -167,7 +167,7 @@ def analyze_python_functions_from_archive(
 def render_functions_to_readme(
     json_path: str = "archive/documentation/function_descriptions.json",
     output_path: str = "README.md",
-    readme_head_path: str = "archive/documentation/readme_head.md",
+    readme_head_path: str = "data/documentation/documentation_header.md",
     project_title: str = "Function Documentation"
 ):
     """
