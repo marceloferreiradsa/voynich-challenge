@@ -12,11 +12,11 @@ manager = VoynichContextManager(
     embeddings_path="data/embeddings/voynich_records_with_embeddings_20250727T125656Z.jsonl",
     reference_paths=reference_paths,
     processed_path="processed_sections.json",
-    responses_path="responses.jsonl"
+    responses_path="data/responses/responses.jsonl"
 )
 
 # Show the last N responses
-manager.show_responses(max_items=50)
+manager.show_responses(max_items=1)
 
 #cost = manager.estimate_recursive_cost(rounds=3, output_multiplier=1.2)
 #print(cost)
